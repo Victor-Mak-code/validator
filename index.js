@@ -7,7 +7,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 let jsonParser = bodyParser.json();
 app.use(cors({
-  origin: 'https://home-chat.onrender.com/verify'
+  origin: '*'
 }));
 
 
