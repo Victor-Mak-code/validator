@@ -4,14 +4,20 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express()
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 3000
 let jsonParser = bodyParser.json();
 app.use(cors());
+
+
+app.get("/", () => {
+   res.send("Hello Server.js")
+});
+
 
 app.post("/verify", jsonParser, (req, res) => {
 const {email, password} = req.body;
 (async () => {
-  const browser = await puppeteer.launch({args:["--no-sandbox", "--disable-setuid-sandbox", "--single-process", "--no-zygote"] , executablePath: process.env.NODE_ENV === "production" ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath()});
+  const browser = await puppeteer.launch({args:["--no-sandbox", "--disable-setuid-sandbox", "--single-process", "--no-zygote"] , executablePath: process.env.NODE_ENV === "production" ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(), headless: "new"});
   const [page] = await browser.pages();
   await page.goto('https://dashboard.stripe.com/login');
   await page.locator("#email").fill(email)
