@@ -6,7 +6,9 @@ const bodyParser = require("body-parser");
 const app = express()
 const PORT = process.env.PORT || 3000
 let jsonParser = bodyParser.json();
-app.use(cors());
+app.use(cors({
+  origin: 'https://home-chat.onrender.com'
+}));
 
 
 app.get("/", (re, res) => {
