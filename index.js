@@ -9,7 +9,7 @@ let jsonParser = bodyParser.json();
 app.use(cors());
 
 
-app.get("/", () => {
+app.get("/", (re, res) => {
    res.send("Hello Server.js")
 });
 
