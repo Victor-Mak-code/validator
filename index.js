@@ -6,10 +6,7 @@ const bodyParser = require("body-parser");
 const app = express()
 const PORT = process.env.PORT || 3000
 let urlEncoded = bodyParser.urlencoded({extended: true});
-app.use(cors({
-  origin: '*'
-}));
-
+app.use(cors());
 
 app.get("/", (req, res) => {
    res.send("Hello Server.js")
